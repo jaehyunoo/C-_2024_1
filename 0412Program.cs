@@ -2,50 +2,46 @@
 {
     class Student
     {
-        public string name;
-        public int grade;
+        private string name;
+        private int grade;
+
+        public Student(string name, int grade)
+        {
+            this.name = name;
+            this.grade = grade;
+        }
+
+        public string Getname () { return name; }
+        public int Getgrade () { return grade;}
     }
     private static void Main(string[] args)
     {
 
         List<Student> students = new List<Student>();
-        students.Add(new Student { name = "윤인성", grade = 1 });
-        students.Add(new Student { name = "연하진", grade = 2 });
-        students.Add(new Student { name = "윤아린", grade = 3 });
-        students.Add(new Student { name = "윤명월", grade = 4 });
-        students.Add(new Student { name = "구지연", grade = 1 });
-        students.Add(new Student { name = "김연화", grade = 2 });
 
+
+            students.Add(new Student("윤인성", 1)); // public 이었다면 new student{name = "윤인성", grade = 1}
+            students.Add(new Student("연하진", 2));
+            students.Add(new Student("윤아린", 3));
+            students.Add(new Student("윤명월", 4));
+            students.Add(new Student("구지연", 1));
+            students.Add(new Student("김연화", 2));
+        
         Console.Write("몇 학년 학생을 찾으시고 싶으십니까 ? ");
         int number = int.Parse(Console.ReadLine());
 
       
-        /*
-         *new student(){name="윤인성", grade=1},
-         *new student(){name="연하진", grade=2}, 
-         *new student(){name="윤아린", grade=3}, 
-         *new student(){name="윤명월", grade=4}, 
-         *new student(){name="구지연", grade=1}, 
-         *new student(){name="김연화", grade=2}
-         */
 
        
         Show2List(students,number);
-        
 
-        /*
-        foreach (var  student in students)
-        {
-            Console.WriteLine($"{student.name} : {student.grade}학년");
-        }
-        */
     }
 
     private static void ShowList(List<Student> list) // ShowList함수 안에 리스트이름과 형식을 ()안에 넣는다.
     {
         foreach (var student in list)
         {
-            Console.WriteLine($"{student.name} : {student.grade}학년");
+            Console.WriteLine($"{student.Getname()} : {student.Getgrade()}학년");
         }
     }
 
@@ -64,7 +60,7 @@
 
         foreach (var student in list)
         {
-            if(student.grade == num)
+            if(student.Getgrade() == num)
             {
                 member.Add(student);
             }
